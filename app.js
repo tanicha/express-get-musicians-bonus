@@ -67,6 +67,7 @@ app.put('/musicians/:id', async (req, res) => {
 // The Band Model has an association with many musicians 
 // 1. Respond with the paricular band including the musician in that particular band
 
+
 app.listen(port, async () => {
 	await seed()
     console.log(`Server listening at http://localhost:${port}`)
