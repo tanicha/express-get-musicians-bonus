@@ -1,3 +1,5 @@
+![logo](https://user-images.githubusercontent.com/44912347/202296600-c5f247d6-9616-49db-88f0-38433429d781.jpg)
+
 # Express Get Musicians Bonus
 **TASK**: In this assignment, you’re are given two models Band and Musician. The following associations exist with these two models:
 
