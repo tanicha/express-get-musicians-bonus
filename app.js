@@ -61,12 +61,40 @@ app.put('/musicians/:id', async (req, res) => {
 //TODO: Make a GET Request to the Band model. 
 // The Band Model has an association with many musicians
 // 1. Respond with the Bands including the Musicians in that band.
-
+app.get('/bands', async (req, res) => {
+	try {
+		const bands = await Band.findAll({
+			include: [
+				{ model: Musician }
+			]
+		})
+		res.status(200).json(bands)
+	} catch (error){
+		console.error(error)
+		res.status(404).send('No records found')
+	}
+})
 
 //TODO: Make a GET Request to the Band Model at a particular ID
 // The Band Model has an association with many musicians 
 // 1. Respond with the paricular band including the musician in that particular band
-
+app.get('/bands/:id', async (req, res) => {
+	try {
+		//list all musicians inside of this particular band
+		const thisBand = await Band.findAll({
+			where: {
+				id: req.params.id
+			},
+				include: [
+					{ model: Musician }
+			]
+		})
+		res.status(200).json(thisBand)
+	} catch (error){
+		console.error(error)
+		res.status(404).send('No records found')
+	}
+})
 
 app.listen(port, async () => {
 	await seed()
